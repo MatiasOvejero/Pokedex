@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import "./Components/Pokedex";
+import React, { useState } from "react";
+import Pokedex from "./Components/Pokedex";
 
-function App() {
+function App(e) {
+  const pokemon = e.target.elements.pokemon.value;
+  console.log(e);
+  const [pokDex, setpokDex] = useState();
+
+  const APIdata = fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}`)
+    .then((response) => response.json())
+    .then((data) => console.log(data));
+
+  if (pokemon && pokemon.length > 0) {
+    setpokDex({
+      data: APIdata,
+      pokemon: APIdata.fronts.name,
+      type: APIdata.type.name,
+    });
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Pokedex getPok={App} />
     </div>
   );
 }
+
+console.log(App());
 
 export default App;
