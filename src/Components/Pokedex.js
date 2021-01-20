@@ -2,22 +2,19 @@ import React from "react";
 
 const Pokedex = ({ pokemon, type, stats, id, moves, img }) => {
   return (
-    <div id="Pokedex">
-      <div id="leftSide">
-        <div id="nameId">
-          <p>
-            {pokemon}
-            {id}
-          </p>
+    <div id="Pokedex" className="pokedex">
+      <div id="leftSide" className="pokedex__leftside">
+        <div id="nameId" className="pokedex__nameid">
+          <p>{pokemon}</p>
+          {id && <p>#{id}</p>}
         </div>
         <div id="img">
-          <img src={img} />
+          <img src={img} alt={`Imagen de ${pokemon}`} />
         </div>
       </div>
       <div id="rightSide">
         <div id="data">
-          <p>{type}</p>
-
+          {type && <p>Clase: {type}</p>}
           <ul>
             {stats &&
               stats.map((item, index) => (

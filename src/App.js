@@ -8,7 +8,8 @@ function App() {
   const [pokDex, setpokDex] = useState([]);
 
   async function fetchData(e) {
-    const pokemon = e.target.elements.pokemon.value;
+    const pokemon = e.target.elements.pokemon.value.toLowerCase();
+
     e.preventDefault();
     const APIdata = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}`)
       .then((response) => response.json())
@@ -27,18 +28,20 @@ function App() {
   }
   console.log("response", pokDex);
   return (
-    <div>
-      <Search getPok={fetchData} />
-      {pokDex && (
-        <Pokedex
-          pokemon={pokDex.pokemon}
-          type={pokDex.type}
-          stats={pokDex.stats}
-          moves={pokDex.moves}
-          id={pokDex.id}
-          img={pokDex.img}
-        />
-      )}
+    <div className="app">
+      <div className="app__container">
+        <Search getPok={fetchData} />
+        {pokDex.pokemon && (
+          <Pokedex
+            pokemon={pokDex.pokemon}
+            type={pokDex.type}
+            stats={pokDex.stats}
+            moves={pokDex.moves}
+            id={pokDex.id}
+            img={pokDex.img}
+          />
+        )}
+      </div>
     </div>
   );
 }
