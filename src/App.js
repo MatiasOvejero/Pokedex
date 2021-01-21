@@ -23,6 +23,8 @@ function App() {
         moves: APIdata.moves,
         id: APIdata.id,
         img: APIdata.sprites.front_default,
+        female: APIdata.sprites.front_female,
+        shiny: APIdata.sprites.front_shiny,
       });
     }
   }
@@ -39,6 +41,8 @@ function App() {
             moves={pokDex.moves}
             id={pokDex.id}
             img={pokDex.img}
+            female={pokDex.female}
+            shiny={pokDex.shiny}
           />
         )}
       </div>
