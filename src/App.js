@@ -1,4 +1,4 @@
-import "./App.css";
+import "./App.scss";
 import "./Components/Pokedex";
 import React, { useState } from "react";
 import Pokedex from "./Components/Pokedex";
@@ -32,19 +32,17 @@ function App() {
   return (
     <div className="app">
       <div className="app__container">
-        <Search getPok={fetchData} />
-        {pokDex.pokemon && (
-          <Pokedex
-            pokemon={pokDex.pokemon}
-            type={pokDex.type}
-            stats={pokDex.stats}
-            moves={pokDex.moves}
-            id={pokDex.id}
-            img={pokDex.img}
-            female={pokDex.female}
-            shiny={pokDex.shiny}
-          />
-        )}
+        <Pokedex
+          search={fetchData}
+          pokemon={pokDex.pokemon}
+          type={pokDex.type}
+          stats={pokDex.stats}
+          moves={pokDex.moves}
+          id={pokDex.id}
+          img={pokDex.img}
+          female={pokDex.female}
+          shiny={pokDex.shiny}
+        />
       </div>
     </div>
   );
