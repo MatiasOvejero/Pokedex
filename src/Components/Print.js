@@ -3,7 +3,7 @@ import React from "react";
 const Print = (props) => {
   return (
     <div className="print">
-      {props.change == "S" &&
+      {props.change === "S" &&
         (props.shiny ? (
           <img
             src={props.shiny}
@@ -13,7 +13,7 @@ const Print = (props) => {
         ) : (
           <p>No hay shiny</p>
         ))}
-      {props.change == "F" &&
+      {props.change === "F" &&
         (props.female ? (
           <img
             src={props.female}
